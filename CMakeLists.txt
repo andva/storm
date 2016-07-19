@@ -25,20 +25,20 @@ ENDIF(MSVC)
 add_subdirectory(external)
 
 add_subdirectory(src/hscore)
+add_subdirectory(src/graphics)
 
 list(APPEND SOURCES "src/main.cpp")
-message("${SDL_LIB_DIR}")
-message("${CORE_INCLUDE_DIR}")
 
 include_directories(
 	${SDL_INCLUDE_DIR}
 	${GLM_INCLUDE_DIR}
 	${CORE_INCLUDE_DIR}
+	${GRAPHICS_INCLUDE_DIR}
 	)
 
 link_directories(${SDL_LIB_DIR})
 
 add_executable(stormer ${SOURCES})
 
-target_link_libraries(stormer SDL2 core)
+target_link_libraries(stormer SDL2 core graphics)
 add_dependencies(stormer GLM SDL TINYOBJ)
