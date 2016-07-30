@@ -10,7 +10,7 @@ hscore::InStream::InStream(const std::string& path)
 	s->open(path, std::ios::in);
 	if (fail())
 	{
-		LOG_DEBUG(LOG_CORE, (path + std::string(": File not found")));
+		LOG_WARNING((path + std::string(": File not found")));
 	}
 }
 

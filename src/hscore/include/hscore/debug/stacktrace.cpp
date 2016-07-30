@@ -51,10 +51,10 @@ void hscore::printStack()
     IMAGEHLP_LINE64 line;
 
     line.SizeOfStruct = sizeof(IMAGEHLP_LINE64);
-    if (/*!strstr(symbol->Name, "VSDebugLib::") &&*/
+    if (
       SymGetLineFromAddr64(process, (DWORD64)(stack[i]), &dwDisplacement, &line))
     {
-			LOG_INFO(LOG_CORE, symbol->Name, ":", line.LineNumber);
+			LOG_INFO(symbol->Name, ":", line.LineNumber);
     }
     if (0 == strcmp(symbol->Name, "main"))
       break;

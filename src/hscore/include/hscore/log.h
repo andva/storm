@@ -23,7 +23,6 @@ inline void doLogText(T&& t)
 template <typename T, typename... Args>
 void doLogText(T&& t, Args&&... tail)
 {
-	//LogManager::locate()->log(Logger::Debug, std::forward<Args>(args)...)
 	std::cout << std::forward<T>(t);
 	doLogText(std::forward<Args>(tail)...);
 };
@@ -47,16 +46,22 @@ inline void logText(Logger::Level logLevel, const char* const logCategory, const
 
 //hscore::logText(__level__, __category__, __FUNCTION__, __LINE__, ##__VA_ARGS__)
 
-#define LOG_ERROR(__category__, ...) LOG(hscore::Logger::Error, __category__, ##__VA_ARGS__)
+#define LOG_ERROR_I(__category__, ...) LOG(hscore::Logger::Error, __category__, ##__VA_ARGS__)
 
-#define LOG_WARNING(__category__, ...) LOG(hscore::Logger::Warning, __category__, ##__VA_ARGS__)
+#define LOG_WARNING_I(__category__, ...) LOG(hscore::Logger::Warning, __category__, ##__VA_ARGS__)
 
-#define LOG_INFO(__category__, ...) LOG(hscore::Logger::Info, __category__, ##__VA_ARGS__)
+#define LOG_INFO_I(__category__, ...) LOG(hscore::Logger::Info, __category__, ##__VA_ARGS__)
 
 #ifndef NDEBUG
-#define LOG_DEBUG(__category__, ...) LOG(hscore::Logger::Debug, __category__, ##__VA_ARGS__)
+#define LOG_DEBUG_I(__category__, ...) LOG(hscore::Logger::Debug, __category__, ##__VA_ARGS__)
 #else
-#define LOG_DEBUG(__category__, ...) HS_DO_NOTHING
+#define LOG_DEBUG_I(__category__, ...) HS_DO_NOTHING
 #endif
 
 #define LOG_CORE "CORE"
+
+#define LOG_WARNING(...) LOG_WARNING_I(LOG_CORE, ##__VA_ARGS__)
+
+#define LOG_DEBUG(...) LOG_DEBUG_I(LOG_CORE, ##__VA_ARGS__)
+
+#define LOG_INFO(...) LOG_INFO_I(LOG_CORE, ##__VA_ARGS__)

@@ -4,7 +4,7 @@
 #include <vector>
 
 #include <hscore/pattern/singleton.h>
-#include <hscore/hailstormmodule.h>
+#include <hscore/hsmodule.h>
 
 #pragma once
 namespace hscore

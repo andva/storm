@@ -1,43 +1,45 @@
 #include <SDL.h>
+
 #include <hscore/log.h>
 #include <hscore/coremodule.h>
 #include <graphics/graphicsmodule.h>
 #include <hscore/modulemanager.h>
+#include <graphics/log.h>
+
+bool pollKeyboard() {
+	SDL_Event event;
+	while (SDL_PollEvent(&event)) {
+		switch( event.type ){
+			/* Look for a keypress */
+			case SDL_KEYDOWN:
+			/* Check the SDLKey values and move change the coords */
+			switch(event.key.keysym.sym){
+				case SDLK_q:
+					SDL_Quit();
+					return true;
+				case SDLK_t:
+					LOG_INFO("main", "T");
+				default:
+					break;
+			}
+		}
+	}
+	return false;
+}
+
+
 
 int main() {
 	hscore::CoreModule cm;
 	GraphicsModule gm;
 
 	hscore::ModuleManager::instance().init();
-	hscore::ModuleManager::instance().update();
-
-	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-		LOG_WARNING("main", "SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
-	}
-	else {
-		LOG_INFO("main", "SDL initialized!");
-	}
-	SDL_Window* window = SDL_CreateWindow(
-			"storm",
-			SDL_WINDOWPOS_CENTERED,
-			SDL_WINDOWPOS_CENTERED,
-			512,
-			512,
-			SDL_WINDOW_OPENGL);
-
-	//Get window surface
-	SDL_Surface* screenSurface = SDL_GetWindowSurface(window);
-
-	//Fill the surface white
-	SDL_FillRect( screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0xFF, 0xFF, 0xFF));
-
-	//Update the surface
-	SDL_UpdateWindowSurface( window );
 
 	//Wait two seconds
-	SDL_Delay( 2000 );
 
-	SDL_DestroyWindow(window);
+	while (!pollKeyboard()) {
+		hscore::ModuleManager::instance().update();
+	}
 	SDL_Quit();
 
 	return 0;

@@ -69,7 +69,7 @@ hscore::Break::~Break()
 
 void hscore::Break::doBreak(const std::string& breakFunction, const int32_t breakLine)
 {
-  LOG_INFO(LOG_CORE, "Breakpoint hit (", breakFunction, ":", breakLine, ")");
+  LOG_INFO("Breakpoint hit (", breakFunction, ":", breakLine, ")");
 #ifdef HS_BREAK_ON_CUSTOM_BREAKPOINTS
   hsDebugBreak();
 #endif

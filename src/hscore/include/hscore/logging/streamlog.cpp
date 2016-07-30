@@ -32,7 +32,7 @@ const int32_t LogColorWhite = 7;
 const int32_t LogColorGreen = 2;
 #else
 const int32_t LogColorRed = 31;
-const int32_t LogColorYellow = 43;
+const int32_t LogColorYellow = 33;
 const int32_t LogColorWhite = 39;
 const int32_t LogColorGreen = 32;
 #endif

@@ -1,4 +1,4 @@
-#include "hailstormmodule.h"
+#include "hsmodule.h"
 
 #include <hscore/modulemanager.h>
 #include <hscore/log.h>

@@ -39,6 +39,7 @@ include_directories(
 link_directories(${SDL_LIB_DIR})
 
 add_executable(stormer ${SOURCES})
+ FIND_LIBRARY(OpenGL_LIBRARY OpenGL)
 
-target_link_libraries(stormer SDL2 core graphics)
+target_link_libraries(stormer SDL2 core ${OpenGL_LIBRARY} graphics)
 add_dependencies(stormer GLM SDL TINYOBJ)

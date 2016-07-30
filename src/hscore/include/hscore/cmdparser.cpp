@@ -99,7 +99,7 @@ void hscore::CmdParser::parse(int32_t argc, char* argv[])
 		if (!found)
 		{
 			std::string argString = a.toString();
-			LOG_WARNING(LOG_CORE, "Argument %s not found. It was ignored.", argString);
+			LOG_WARNING("Argument %s not found. It was ignored.", argString);
 		}
 	}
 }
@@ -108,7 +108,7 @@ void hscore::CmdParser::logPossibleArguments() const
 {
 	for (const CmdParser::arg_dI* v : m_arglist)
 	{
-		LOG_INFO(LOG_CORE, "-", v->m_key, "--", v->m_lkey, "\t", v->m_description);
+		LOG_INFO("-", v->m_key, "--", v->m_lkey, "\t", v->m_description);
 	}
 }
 

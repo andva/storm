@@ -30,12 +30,12 @@ void hscore::Settings::reset()
 
 void hscore::Settings::logSettings() const
 {
-	LOG_INFO(LOG_CORE, "-- Log settings --");
+	LOG_INFO("-- Log settings --");
 	for (auto& s : m_buffer)
 	{
-		LOG_INFO(LOG_CORE, s.second.getValue(), "\t", s.first);
+		LOG_INFO(s.second.getValue(), "\t", s.first);
 	}
-	LOG_INFO(LOG_CORE, "-- --");
+	LOG_INFO("-- --");
 }
 
 void hscore::Settings::updateValue(const std::string& key, const std::string& val)
@@ -58,6 +58,6 @@ void hscore::Settings::parseFile(std::string line)
 	}
 	else
 	{
-		LOG_WARNING(LOG_CORE, "Entry ", line, " has no assigned value.");
+		LOG_WARNING("Entry ", line, " has no assigned value.");
 	}
 }

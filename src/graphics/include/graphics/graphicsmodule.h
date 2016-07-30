@@ -5,7 +5,8 @@
 #ifndef STORM_GRAPHICSMODULE_H
 #define STORM_GRAPHICSMODULE_H
 
-#include <hscore/hailstormmodule.h>
+#include <hscore/hsmodule.h>
+#include <graphics/windowmanager.h>
 
 #pragma once
 
@@ -20,6 +21,7 @@ public:
 	virtual void registerKeys() override;
 	virtual void init() override;
 private:
+	WindowManager mWindowManager;
 };
 
 

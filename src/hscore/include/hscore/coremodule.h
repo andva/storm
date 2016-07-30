@@ -1,7 +1,7 @@
 #ifndef HSCORE_COREMODULE_H
 #define HSCORE_COREMODULE_H
 
-#include <hscore/hailstormmodule.h>
+#include <hscore/hsmodule.h>
 #include <hscore/logging/streamlog.h>
 #include <hscore/settings/settingsdescription.h>
 #pragma once
